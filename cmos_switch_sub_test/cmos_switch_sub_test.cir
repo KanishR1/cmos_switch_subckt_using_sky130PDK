@@ -1,0 +1,20 @@
+* /home/kanish/esim/esim_tut/cmos_switch_sub_test/cmos_switch_sub_test.cir
+
+* EESchema Netlist Version 1.1 (Spice format) creation date: Wed Nov 30 22:16:45 2022
+
+* To exclude a component from the Spice Netlist add [Spice_Netlist_Enabled] user FIELD set to: N
+* To reorder the component spice node sequence add [Spice_Node_Sequence] user FIELD and define sequence: 2,1,0
+
+* Sheet Name: /
+X1  Din Vin_2 Vin_1 Vout Net-_X1-Pad5_ Net-_X1-Pad6_ cmos_switch_sub		
+v3  Vin_1 GND DC		
+v2  Vin_2 GND DC		
+v4  Net-_X1-Pad5_ Net-_X1-Pad6_ DC		
+v1  Din GND pulse		
+U1  Din plot_v1		
+U2  Vin_2 plot_v1		
+U3  Vin_1 plot_v1		
+U4  Vout plot_v1		
+scmode1  SKY130mode		
+
+.end

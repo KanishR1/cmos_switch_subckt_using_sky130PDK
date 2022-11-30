@@ -1,0 +1,20 @@
+* /home/kanish/esim-2.3/library/subcircuitlibrary/cmos_switch_sub/cmos_switch_sub.cir
+
+xsc1 a1 net-_sc1-pad2_ vdd vdd sky130_fd_pr__pfet_01v8_hvt 
+xsc2 a1 net-_sc1-pad2_ gnd gnd sky130_fd_pr__nfet_01v8 
+xsc5 a2 a1 vdd vdd sky130_fd_pr__pfet_01v8_hvt 
+xsc6 a2 a1 gnd gnd sky130_fd_pr__nfet_01v8 
+xsc3 net-_sc3-pad1_ a1 net-_sc3-pad3_ vdd sky130_fd_pr__pfet_01v8_hvt 
+xsc8 net-_sc4-pad3_ a2 net-_sc3-pad1_ vdd sky130_fd_pr__pfet_01v8_hvt 
+xsc4 net-_sc3-pad1_ a1 net-_sc4-pad3_ gnd sky130_fd_pr__nfet_01v8 
+xsc7 net-_sc3-pad3_ a2 net-_sc3-pad1_ gnd sky130_fd_pr__nfet_01v8 
+* u1  net-_sc1-pad2_ net-_sc4-pad3_ net-_sc3-pad3_ net-_sc3-pad1_ vdd gnd port
+.tran 0e-00 0e-00 0e-00
+
+* Control Statements 
+.control
+run
+print allv > plot_data_v.txt
+print alli > plot_data_i.txt
+.endc
+.end

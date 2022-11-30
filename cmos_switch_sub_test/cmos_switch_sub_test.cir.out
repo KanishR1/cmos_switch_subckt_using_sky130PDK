@@ -1,0 +1,33 @@
+* /home/kanish/esim/esim_tut/cmos_switch_sub_test/cmos_switch_sub_test.cir
+
+.include cmos_switch_sub.sub
+.include "/usr/share/local/sky130_fd_pr/models/sky130_fd_pr__model__diode_pd2nw_11v0.model.spice"
+.include "/usr/share/local/sky130_fd_pr/models/sky130_fd_pr__model__pnp.model.spice"
+.include "/usr/share/local/sky130_fd_pr/models/sky130_fd_pr__model__linear.model.spice"
+.include "/usr/share/local/sky130_fd_pr/models/sky130_fd_pr__model__inductors.model.spice"
+.include "/usr/share/local/sky130_fd_pr/models/sky130_fd_pr__model__diode_pw2nd_11v0.model.spice"
+.lib "/usr/share/local/sky130_fd_pr/models/sky130.lib.spice" tt
+.include "/usr/share/local/sky130_fd_pr/models/sky130_fd_pr__model__r+c.model.spice"
+x1 din vin_2 vin_1 vout net-_x1-pad5_ net-_x1-pad6_ cmos_switch_sub
+v3 vin_1 gnd  dc 5
+v2 vin_2 gnd  dc 2.5
+v4 net-_x1-pad5_ net-_x1-pad6_  dc 1.8
+v1  din gnd pulse(0 1.8 0.1m 0.1m 0.1m 1m 2m)
+* u1  din plot_v1
+* u2  vin_2 plot_v1
+* u3  vin_1 plot_v1
+* u4  vout plot_v1
+* s c m o d e
+.tran 0.1e-03 10e-03 0e-00
+
+* Control Statements 
+.control
+run
+print allv > plot_data_v.txt
+print alli > plot_data_i.txt
+plot v(din)
+plot v(vin_2)
+plot v(vin_1)
+plot v(vout)
+.endc
+.end
